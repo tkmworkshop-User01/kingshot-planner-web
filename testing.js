@@ -1,7 +1,9 @@
 'use strict';
 // Activate only after the group exists, its privacy settings are verified and
 // Play's Alpha track uses it. Do not collect membership data on this static site.
-const enrollment = Object.freeze({groupUrl: 'https://groups.google.com/g/ksplannertesters', testUrl: null});
+// About is the public joining surface. The group root opens conversations,
+// which are deliberately owner-only for this access-list group.
+const enrollment = Object.freeze({groupUrl: 'https://groups.google.com/g/ksplannertesters/about', testUrl: null});
 const fields = ['title','intro','pending','requirements','join','groupHelp','install','testHelp','try','tryHelp','help','privacy','policy'];
 const languages = [
   ['en','English'],['es','Español'],['fr','Français'],['de','Deutsch'],
