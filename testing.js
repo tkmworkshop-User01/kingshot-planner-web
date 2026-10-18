@@ -3,7 +3,7 @@
 // Play's Alpha track uses it. Do not collect membership data on this static site.
 // About is the public joining surface. The group root opens conversations,
 // which are deliberately owner-only for this access-list group.
-const enrollment = Object.freeze({groupUrl: 'https://groups.google.com/g/ksplannertesters/about', testUrl: null});
+const enrollment = Object.freeze({groupUrl: 'https://groups.google.com/g/ksplannertesters/about', leaveUrl: 'https://groups.google.com/g/ksplannertesters/membership', testUrl: 'https://play.google.com/apps/testing/com.tkmworkshop.kscalculator'});
 const fields = ['title','intro','pending','requirements','join','groupHelp','install','testHelp','try','tryHelp','help','privacy','policy'];
 const languages = [
   ['en','English'],['es','Español'],['fr','Français'],['de','Deutsch'],
@@ -13,24 +13,27 @@ const languages = [
 ];
 const languageLabels={en:'Language',es:'Idioma',fr:'Langue',de:'Sprache',pt:'Idioma',it:'Lingua',pl:'Język',tr:'Dil',ru:'Язык',ar:'اللغة',th:'ภาษา',vi:'Ngôn ngữ',id:'Bahasa',ko:'언어',ja:'言語',zh:'语言','zh-TW':'語言'};
 const returnHelp={
-  en:'Google Groups opens in a new tab. After joining, return to this signup tab for the installation step.',
-  es:'Grupos de Google se abre en otra pestaña. Después de unirte, vuelve a esta pestaña para el paso de instalación.',
-  fr:'Google Groupes s’ouvre dans un nouvel onglet. Après l’adhésion, revenez à cet onglet pour l’étape d’installation.',
-  de:'Google Groups öffnet sich in einem neuen Tab. Kehre nach dem Beitritt für den Installationsschritt zu diesem Tab zurück.',
-  pt:'O Grupos do Google abre em outra aba. Depois de entrar, volte a esta aba para a etapa de instalação.',
-  it:'Google Gruppi si apre in una nuova scheda. Dopo l’adesione, torna a questa scheda per il passaggio di installazione.',
-  pl:'Grupy dyskusyjne Google otworzą się w nowej karcie. Po dołączeniu wróć do tej karty, aby przejść do instalacji.',
-  tr:'Google Gruplar yeni bir sekmede açılır. Katıldıktan sonra yükleme adımı için bu kayıt sekmesine dön.',
-  ru:'Google Группы откроются в новой вкладке. После вступления вернитесь в эту вкладку для шага установки.',
-  ar:'تفتح مجموعات Google في علامة تبويب جديدة. بعد الانضمام، ارجع إلى علامة التسجيل هذه لخطوة التثبيت.',
-  th:'Google Groups จะเปิดในแท็บใหม่ หลังเข้าร่วมแล้ว กลับมาที่แท็บลงทะเบียนนี้เพื่อดูขั้นตอนติดตั้ง',
-  vi:'Google Groups mở trong thẻ mới. Sau khi tham gia, quay lại thẻ đăng ký này để đến bước cài đặt.',
-  id:'Google Grup terbuka di tab baru. Setelah bergabung, kembali ke tab pendaftaran ini untuk langkah instalasi.',
-  ko:'Google 그룹스가 새 탭에서 열립니다. 가입 후 설치 단계로 진행하려면 이 신청 탭으로 돌아오세요.',
-  ja:'Google グループは新しいタブで開きます。参加後はこの申込タブに戻り、インストールの手順を確認してください。',
-  zh:'Google 群组将在新标签页打开。加入后，请返回此报名标签页查看安装步骤。',
-  'zh-TW':'Google 網上論壇會在新分頁開啟。加入後，請返回此報名分頁查看安裝步驟。'
+  "en": "Google Groups opens in a new tab. After joining, tap Back or close that tab to return here, then tap Download and install.",
+  "es": "Grupos de Google se abre en otra pestaña. Después de unirte, toca Atrás o cierra esa pestaña para volver aquí y toca Descargar e instalar.",
+  "fr": "Google Groupes s’ouvre dans un nouvel onglet. Après l’adhésion, touchez Retour ou fermez cet onglet pour revenir ici, puis touchez Télécharger et installer.",
+  "de": "Google Groups öffnet sich in einem neuen Tab. Tippe nach dem Beitritt auf Zurück oder schließe diesen Tab, um hierher zurückzukehren, und tippe dann auf Herunterladen und installieren.",
+  "pt": "O Grupos do Google abre em outra aba. Depois de entrar, toque em Voltar ou feche essa aba para retornar aqui e toque em Baixar e instalar.",
+  "it": "Google Gruppi si apre in una nuova scheda. Dopo l’adesione, tocca Indietro o chiudi quella scheda per tornare qui, poi tocca Scarica e installa.",
+  "pl": "Grupy dyskusyjne Google otworzą się w nowej karcie. Po dołączeniu naciśnij Wstecz lub zamknij tę kartę, aby tu wrócić, a potem naciśnij Pobierz i zainstaluj.",
+  "tr": "Google Gruplar yeni bir sekmede açılır. Katıldıktan sonra buraya dönmek için Geri’ye dokun veya o sekmeyi kapat, ardından İndir ve yükle’ye dokun.",
+  "ru": "Google Группы откроются в новой вкладке. После вступления нажмите «Назад» или закройте ту вкладку, чтобы вернуться сюда, затем нажмите «Скачать и установить».",
+  "ar": "تفتح مجموعات Google في علامة تبويب جديدة. بعد الانضمام، اضغط رجوع أو أغلق علامة التبويب تلك للعودة إلى هنا، ثم اضغط «التنزيل والتثبيت».",
+  "th": "Google Groups จะเปิดในแท็บใหม่ หลังเข้าร่วมแล้ว แตะย้อนกลับหรือปิดแท็บนั้นเพื่อกลับมาที่นี่ แล้วแตะดาวน์โหลดและติดตั้ง",
+  "vi": "Google Groups mở trong thẻ mới. Sau khi tham gia, nhấn Quay lại hoặc đóng thẻ đó để trở lại đây, rồi nhấn Tải xuống và cài đặt.",
+  "id": "Google Grup terbuka di tab baru. Setelah bergabung, ketuk Kembali atau tutup tab itu untuk kembali ke sini, lalu ketuk Unduh dan instal.",
+  "ko": "Google 그룹스가 새 탭에서 열립니다. 가입 후 뒤로를 누르거나 그 탭을 닫아 이곳으로 돌아온 다음 다운로드 및 설치를 누르세요.",
+  "ja": "Google グループは新しいタブで開きます。参加後は「戻る」を押すかそのタブを閉じてここに戻り、「ダウンロードしてインストール」を押してください。",
+  "zh": "Google 群组将在新标签页打开。加入后，点按返回或关闭该标签页回到这里，然后点按“下载并安装”。",
+  "zh-TW": "Google 網上論壇會在新分頁開啟。加入後，請點按返回或關閉該分頁回到這裡，再點按「下載並安裝」。"
 };
+const stepOne={"en": "Step 1: Tap below to open the Google Group. Tap Join group, then confirm.", "es": "Paso 1: Toca abajo para abrir el grupo de Google. Toca Unirse al grupo y confirma.", "fr": "Étape 1 : touchez ci-dessous pour ouvrir le groupe Google. Touchez Rejoindre le groupe, puis confirmez.", "de": "Schritt 1: Tippe unten, um die Google-Gruppe zu öffnen. Tippe auf Gruppe beitreten und bestätige.", "pt": "Passo 1: Toque abaixo para abrir o grupo do Google. Toque em Participar do grupo e confirme.", "it": "Passo 1: tocca qui sotto per aprire il gruppo Google. Tocca Iscriviti al gruppo e conferma.", "pl": "Krok 1: Naciśnij poniżej, aby otworzyć grupę Google. Naciśnij Dołącz do grupy i potwierdź.", "tr": "Adım 1: Google Grubunu açmak için aşağıya dokun. Gruba katıl’a dokun ve onayla.", "ru": "Шаг 1: нажмите кнопку ниже, чтобы открыть группу Google. Нажмите «Вступить в группу» и подтвердите.", "ar": "الخطوة 1: اضغط الزر أدناه لفتح مجموعة Google. اضغط الانضمام إلى المجموعة، ثم أكّد.", "th": "ขั้นตอนที่ 1: แตะปุ่มด้านล่างเพื่อเปิด Google Group แตะเข้าร่วมกลุ่ม แล้วยืนยัน", "vi": "Bước 1: Nhấn nút bên dưới để mở nhóm Google. Nhấn Tham gia nhóm, rồi xác nhận.", "id": "Langkah 1: Ketuk tombol di bawah untuk membuka Google Grup. Ketuk Gabung ke grup, lalu konfirmasi.", "ko": "1단계: 아래 버튼을 눌러 Google 그룹을 여세요. 그룹 가입을 누른 후 확인하세요.", "ja": "ステップ1：下のボタンを押して Google グループを開きます。「グループに参加」を押して確定してください。", "zh": "第 1 步：点按下方按钮打开 Google 群组。点按“加入群组”，然后确认。", "zh-TW": "步驟 1：點按下方按鈕開啟 Google 網上論壇。點按「加入群組」，然後確認。"};
+const stepTwo={"en": "Step 2: When you’ve joined, come back to this page and tap Download and install.", "es": "Paso 2: Cuando te hayas unido, vuelve a esta página y toca Descargar e instalar.", "fr": "Étape 2 : une fois inscrit, revenez sur cette page et touchez Télécharger et installer.", "de": "Schritt 2: Wenn du beigetreten bist, kehre zu dieser Seite zurück und tippe auf Herunterladen und installieren.", "pt": "Passo 2: Depois de entrar, volte a esta página e toque em Baixar e instalar.", "it": "Passo 2: dopo l’iscrizione, torna a questa pagina e tocca Scarica e installa.", "pl": "Krok 2: Po dołączeniu wróć na tę stronę i naciśnij Pobierz i zainstaluj.", "tr": "Adım 2: Katıldıktan sonra bu sayfaya dön ve İndir ve yükle’ye dokun.", "ru": "Шаг 2: после вступления вернитесь на эту страницу и нажмите «Скачать и установить».", "ar": "الخطوة 2: بعد الانضمام، ارجع إلى هذه الصفحة واضغط «التنزيل والتثبيت».", "th": "ขั้นตอนที่ 2: เมื่อเข้าร่วมแล้ว กลับมาที่หน้านี้และแตะดาวน์โหลดและติดตั้ง", "vi": "Bước 2: Khi đã tham gia, quay lại trang này và nhấn Tải xuống và cài đặt.", "id": "Langkah 2: Setelah bergabung, kembali ke halaman ini dan ketuk Unduh dan instal.", "ko": "2단계: 가입한 후 이 페이지로 돌아와 다운로드 및 설치를 누르세요.", "ja": "ステップ2：参加したらこのページに戻り、「ダウンロードしてインストール」を押してください。", "zh": "第 2 步：加入后，返回此页面并点按“下载并安装”。", "zh-TW": "步驟 2：加入後，返回此頁面並點按「下載並安裝」。"};
+const leaveLabels={"en": "Leave the group", "es": "Salir del grupo", "fr": "Quitter le groupe", "de": "Gruppe verlassen", "pt": "Sair do grupo", "it": "Lascia il gruppo", "pl": "Opuść grupę", "tr": "Gruptan ayrıl", "ru": "Покинуть группу", "ar": "مغادرة المجموعة", "th": "ออกจากกลุ่ม", "vi": "Rời nhóm", "id": "Keluar dari grup", "ko": "그룹 탈퇴", "ja": "グループを退会", "zh": "退出群组", "zh-TW": "退出群組"};
 const actionLabels={
   "en": [
     "Join the group to access the test",
@@ -184,7 +187,7 @@ const copy = {
     'Join the tester group',
     'Join our Google Group using the account you use in the Play Store. Group membership gives that account access to the closed test.',
     'Become a tester and install',
-    'After joining the group, open the Play testing link with the same Google account. Choose to become a tester, then install from Google Play. This link works once the closed test is published.',
+    'After joining the group, open the Play testing link with the same Google account. Choose to become a tester, then install from Google Play.',
     'Try it and share feedback',
     'Create a character, try the calculators and check your language. Tell us about confusing text, incorrect results or display problems. Use Settings → Help & Feedback in the app, or email us.',
     'Contact TKM Workshop',
@@ -199,7 +202,7 @@ const copy = {
     'Únete al grupo de pruebas',
     'Únete a nuestro grupo de Google con la cuenta que usas en Play Store. La pertenencia al grupo permite a esa cuenta acceder a la prueba cerrada.',
     'Hazte probador e instala',
-    'Después de unirte al grupo, abre el enlace de pruebas de Play con la misma cuenta de Google. Elige participar y luego instala desde Google Play. El enlace funcionará cuando se publique la prueba cerrada.',
+    'Después de unirte al grupo, abre el enlace de pruebas de Play con la misma cuenta de Google. Elige participar y luego instala desde Google Play.',
     'Prueba y comparte tus comentarios',
     'Crea un personaje, prueba las calculadoras y revisa tu idioma. Cuéntanos si encuentras textos confusos, resultados incorrectos o problemas de visualización. Usa Ajustes → Ayuda y comentarios en la aplicación o escríbenos.',
     'Contactar con TKM Workshop',
@@ -214,7 +217,7 @@ const copy = {
     'Rejoindre le groupe de test',
     'Rejoignez notre groupe Google avec le compte utilisé dans le Play Store. L’adhésion au groupe donne à ce compte accès au test fermé.',
     'Devenir testeur et installer',
-    'Après avoir rejoint le groupe, ouvrez le lien de test Play avec le même compte Google. Choisissez de devenir testeur, puis installez depuis Google Play. Ce lien fonctionnera lorsque le test fermé sera publié.',
+    'Après avoir rejoint le groupe, ouvrez le lien de test Play avec le même compte Google. Choisissez de devenir testeur, puis installez depuis Google Play.',
     'Essayer et partager vos avis',
     'Créez un personnage, essayez les calculateurs et vérifiez votre langue. Signalez les textes peu clairs, les résultats incorrects ou les problèmes d’affichage. Utilisez Paramètres → Aide et commentaires dans l’application ou envoyez-nous un e-mail.',
     'Contacter TKM Workshop',
@@ -229,7 +232,7 @@ const copy = {
     'Der Testgruppe beitreten',
     'Tritt unserer Google-Gruppe mit dem Konto bei, das du im Play Store nutzt. Die Gruppenmitgliedschaft gibt diesem Konto Zugang zum geschlossenen Test.',
     'Tester werden und installieren',
-    'Öffne nach dem Gruppenbeitritt den Play-Testlink mit demselben Google-Konto. Wähle die Teilnahme und installiere die App über Google Play. Der Link funktioniert, sobald der geschlossene Test veröffentlicht ist.',
+    'Öffne nach dem Gruppenbeitritt den Play-Testlink mit demselben Google-Konto. Wähle die Teilnahme und installiere die App über Google Play.',
     'Ausprobieren und Feedback geben',
     'Erstelle einen Charakter, teste die Rechner und prüfe deine Sprache. Melde unklare Texte, falsche Ergebnisse oder Anzeigeprobleme. Nutze Einstellungen → Hilfe und Feedback in der App oder schreib uns eine E-Mail.',
     'TKM Workshop kontaktieren',
@@ -244,7 +247,7 @@ const copy = {
     'Entrar no grupo de testes',
     'Entre no nosso Grupo do Google com a conta que você usa na Play Store. A participação no grupo dá a essa conta acesso ao teste fechado.',
     'Participar do teste e instalar',
-    'Depois de entrar no grupo, abra o link de teste do Play com a mesma conta Google. Escolha participar do teste e instale pela Google Play. O link funcionará quando o teste fechado for publicado.',
+    'Depois de entrar no grupo, abra o link de teste do Play com a mesma conta Google. Escolha participar do teste e instale pela Google Play.',
     'Experimentar e enviar comentários',
     'Crie um personagem, experimente as calculadoras e confira seu idioma. Avise sobre textos confusos, resultados incorretos ou problemas de exibição. Use Configurações → Ajuda e comentários no aplicativo ou envie um e-mail.',
     'Falar com a TKM Workshop',
@@ -259,7 +262,7 @@ const copy = {
     'Unisciti al gruppo di test',
     'Unisciti al nostro gruppo Google con l’account che usi nel Play Store. L’iscrizione al gruppo consente a quell’account di accedere al test chiuso.',
     'Diventa tester e installa',
-    'Dopo esserti unito al gruppo, apri il link del test Play con lo stesso account Google. Scegli di diventare tester, poi installa da Google Play. Il link funzionerà quando il test chiuso sarà pubblicato.',
+    'Dopo esserti unito al gruppo, apri il link del test Play con lo stesso account Google. Scegli di diventare tester, poi installa da Google Play.',
     'Prova e condividi le tue opinioni',
     'Crea un personaggio, prova i calcolatori e controlla la tua lingua. Segnala testi poco chiari, risultati errati o problemi di visualizzazione. Usa Impostazioni → Aiuto e feedback nell’app oppure scrivici.',
     'Contatta TKM Workshop',
@@ -274,7 +277,7 @@ const copy = {
     'Dołącz do grupy testerów',
     'Dołącz do naszej Grupy dyskusyjnej Google, używając konta ze Sklepu Play. Członkostwo w grupie daje temu kontu dostęp do testu zamkniętego.',
     'Zostań testerem i zainstaluj',
-    'Po dołączeniu do grupy otwórz link testowy Play na tym samym koncie Google. Wybierz udział w teście, a następnie zainstaluj aplikację z Google Play. Link zadziała po opublikowaniu testu zamkniętego.',
+    'Po dołączeniu do grupy otwórz link testowy Play na tym samym koncie Google. Wybierz udział w teście, a następnie zainstaluj aplikację z Google Play.',
     'Wypróbuj i podziel się opinią',
     'Utwórz postać, sprawdź kalkulatory i swój język. Zgłoś niejasne teksty, błędne wyniki lub problemy z wyświetlaniem. Skorzystaj z Ustawienia → Pomoc i opinie w aplikacji lub napisz do nas.',
     'Kontakt z TKM Workshop',
@@ -289,7 +292,7 @@ const copy = {
     'Test grubuna katıl',
     'Google grubumuza Play Store’da kullandığın hesapla katıl. Grup üyeliği, bu hesaba kapalı teste erişim sağlar.',
     'Test kullanıcısı ol ve yükle',
-    'Gruba katıldıktan sonra Play test bağlantısını aynı Google hesabıyla aç. Test kullanıcısı olmayı seç, ardından Google Play’den yükle. Bağlantı, kapalı test yayınlandığında çalışır.',
+    'Gruba katıldıktan sonra Play test bağlantısını aynı Google hesabıyla aç. Test kullanıcısı olmayı seç, ardından Google Play’den yükle.',
     'Dene ve geri bildirim paylaş',
     'Bir karakter oluştur, hesaplayıcıları dene ve dilini kontrol et. Anlaşılmayan metinleri, yanlış sonuçları veya görüntüleme sorunlarını bildir. Uygulamada Ayarlar → Yardım ve Geri Bildirim’i kullan veya bize e-posta gönder.',
     'TKM Workshop ile iletişim',
@@ -304,7 +307,7 @@ const copy = {
     'Присоединиться к группе тестирования',
     'Вступите в нашу группу Google с аккаунтом, который используете в Google Play. Участие в группе даёт этому аккаунту доступ к закрытому тесту.',
     'Стать тестировщиком и установить',
-    'После вступления в группу откройте ссылку тестирования Play с тем же аккаунтом Google. Выберите участие в тесте, затем установите приложение из Google Play. Ссылка заработает после публикации закрытого теста.',
+    'После вступления в группу откройте ссылку тестирования Play с тем же аккаунтом Google. Выберите участие в тесте, затем установите приложение из Google Play.',
     'Попробовать и оставить отзыв',
     'Создайте персонажа, проверьте калькуляторы и свой язык. Сообщите о непонятных текстах, неверных результатах или проблемах отображения. Используйте Настройки → Помощь и отзывы в приложении или напишите нам.',
     'Связаться с TKM Workshop',
@@ -319,7 +322,7 @@ const copy = {
     'انضم إلى مجموعة الاختبار',
     'انضم إلى مجموعة Google باستخدام الحساب الذي تستخدمه في متجر Play. تمنح عضوية المجموعة هذا الحساب حق الوصول إلى الاختبار المغلق.',
     'شارك في الاختبار وثبّت التطبيق',
-    'بعد الانضمام إلى المجموعة، افتح رابط اختبار Play بالحساب نفسه. اختر المشاركة في الاختبار، ثم ثبّت التطبيق من Google Play. سيعمل الرابط بعد نشر الاختبار المغلق.',
+    'بعد الانضمام إلى المجموعة، افتح رابط اختبار Play بالحساب نفسه. اختر المشاركة في الاختبار، ثم ثبّت التطبيق من Google Play.',
     'جرّب التطبيق وشارك ملاحظاتك',
     'أنشئ شخصية وجرّب الآلات الحاسبة وراجع لغتك. أخبرنا عن النصوص غير الواضحة أو النتائج الخاطئة أو مشكلات العرض. استخدم الإعدادات ← المساعدة والملاحظات في التطبيق، أو راسلنا بالبريد الإلكتروني.',
     'تواصل مع TKM Workshop',
@@ -334,7 +337,7 @@ const copy = {
     'เข้าร่วมกลุ่มผู้ทดสอบ',
     'เข้าร่วม Google Group ของเราด้วยบัญชีที่ใช้ใน Play Store การเป็นสมาชิกกลุ่มทำให้บัญชีนั้นเข้าถึงการทดสอบแบบปิดได้',
     'เป็นผู้ทดสอบและติดตั้ง',
-    'หลังเข้าร่วมกลุ่ม เปิดลิงก์ทดสอบ Play ด้วยบัญชี Google เดียวกัน เลือกเข้าร่วมการทดสอบ แล้วติดตั้งจาก Google Play ลิงก์นี้จะใช้ได้เมื่อเผยแพร่การทดสอบแบบปิดแล้ว',
+    'หลังเข้าร่วมกลุ่ม เปิดลิงก์ทดสอบ Play ด้วยบัญชี Google เดียวกัน เลือกเข้าร่วมการทดสอบ แล้วติดตั้งจาก Google Play',
     'ทดลองใช้และส่งความคิดเห็น',
     'สร้างตัวละคร ลองใช้เครื่องคำนวณ และตรวจสอบภาษาของคุณ แจ้งข้อความที่ไม่ชัดเจน ผลลัพธ์ผิด หรือปัญหาการแสดงผล ใช้ การตั้งค่า → ความช่วยเหลือและความคิดเห็น ในแอป หรือส่งอีเมลถึงเรา',
     'ติดต่อ TKM Workshop',
@@ -349,7 +352,7 @@ const copy = {
     'Tham gia nhóm thử nghiệm',
     'Tham gia Google Group của chúng tôi bằng tài khoản bạn dùng trên Play Store. Thành viên nhóm sẽ có quyền truy cập thử nghiệm kín bằng tài khoản đó.',
     'Đăng ký thử nghiệm và cài đặt',
-    'Sau khi tham gia nhóm, mở liên kết thử nghiệm Play bằng cùng tài khoản Google. Chọn trở thành người thử nghiệm, rồi cài đặt từ Google Play. Liên kết hoạt động khi thử nghiệm kín được phát hành.',
+    'Sau khi tham gia nhóm, mở liên kết thử nghiệm Play bằng cùng tài khoản Google. Chọn trở thành người thử nghiệm, rồi cài đặt từ Google Play.',
     'Dùng thử và gửi phản hồi',
     'Tạo nhân vật, thử các công cụ tính toán và kiểm tra ngôn ngữ của bạn. Báo cho chúng tôi về văn bản khó hiểu, kết quả sai hoặc lỗi hiển thị. Dùng Cài đặt → Trợ giúp và phản hồi trong ứng dụng hoặc gửi email.',
     'Liên hệ TKM Workshop',
@@ -364,7 +367,7 @@ const copy = {
     'Gabung ke grup penguji',
     'Gabung ke Google Group kami dengan akun yang Anda gunakan di Play Store. Keanggotaan grup memberikan akses uji tertutup kepada akun tersebut.',
     'Jadi penguji dan instal',
-    'Setelah bergabung ke grup, buka tautan pengujian Play dengan akun Google yang sama. Pilih menjadi penguji, lalu instal dari Google Play. Tautan berfungsi setelah uji tertutup dipublikasikan.',
+    'Setelah bergabung ke grup, buka tautan pengujian Play dengan akun Google yang sama. Pilih menjadi penguji, lalu instal dari Google Play.',
     'Coba dan bagikan masukan',
     'Buat karakter, coba kalkulator, dan periksa bahasa Anda. Laporkan teks yang membingungkan, hasil yang salah, atau masalah tampilan. Gunakan Pengaturan → Bantuan & Masukan di aplikasi atau kirim email.',
     'Hubungi TKM Workshop',
@@ -379,7 +382,7 @@ const copy = {
     '테스터 그룹 가입',
     'Play 스토어에서 사용하는 계정으로 Google 그룹에 가입하세요. 그룹 회원이 되면 해당 계정으로 비공개 테스트에 참여할 수 있습니다.',
     '테스터 참여 및 설치',
-    '그룹 가입 후 같은 Google 계정으로 Play 테스트 링크를 여세요. 테스터 참여를 선택한 후 Google Play에서 설치하세요. 비공개 테스트가 출시되면 링크가 작동합니다.',
+    '그룹 가입 후 같은 Google 계정으로 Play 테스트 링크를 여세요. 테스터 참여를 선택한 후 Google Play에서 설치하세요.',
     '사용해 보고 의견 보내기',
     '캐릭터를 만들고 계산기를 사용하며 번역을 확인해 주세요. 이해하기 어려운 문구, 잘못된 결과, 화면 문제를 알려 주세요. 앱의 설정 → 도움말 및 의견을 이용하거나 이메일을 보내 주세요.',
     'TKM Workshop에 문의',
@@ -394,7 +397,7 @@ const copy = {
     'テスターグループに参加',
     'Playストアで使っているアカウントでGoogleグループに参加してください。グループに参加すると、そのアカウントでクローズドテストにアクセスできます。',
     'テスター登録とインストール',
-    'グループ参加後、同じGoogleアカウントでPlayのテストリンクを開きます。テスターへの参加を選び、Google Playからインストールしてください。リンクはクローズドテスト公開後に利用できます。',
+    'グループ参加後、同じGoogleアカウントでPlayのテストリンクを開きます。テスターへの参加を選び、Google Playからインストールしてください。',
     '試して感想を送る',
     'キャラクターを作成し、計算機や翻訳を確認してください。分かりにくい文章、誤った結果、表示の問題をお知らせください。アプリの設定 → ヘルプとフィードバック、またはメールをご利用ください。',
     'TKM Workshopに問い合わせ',
@@ -409,7 +412,7 @@ const copy = {
     '加入测试群组',
     '使用你在 Play 商店使用的账号加入我们的 Google 群组。群组成员资格可让该账号访问封闭测试。',
     '成为测试者并安装',
-    '加入群组后，使用同一个 Google 账号打开 Play 测试链接。选择成为测试者，然后从 Google Play 安装。封闭测试发布后，此链接才可使用。',
+    '加入群组后，使用同一个 Google 账号打开 Play 测试链接。选择成为测试者，然后从 Google Play 安装。',
     '试用并分享反馈',
     '创建角色、试用计算器并检查你的语言。请告知我们难懂的文字、错误的计算结果或显示问题。你可以使用应用中的设置 → 帮助与反馈，或给我们发邮件。',
     '联系 TKM Workshop',
@@ -424,7 +427,7 @@ const copy = {
     '加入測試群組',
     '使用你在 Play 商店使用的帳戶加入我們的 Google 群組。群組成員資格可讓該帳戶存取封閉測試。',
     '成為測試人員並安裝',
-    '加入群組後，使用同一個 Google 帳戶開啟 Play 測試連結。選擇成為測試人員，再從 Google Play 安裝。封閉測試發布後，此連結才能使用。',
+    '加入群組後，使用同一個 Google 帳戶開啟 Play 測試連結。選擇成為測試人員，再從 Google Play 安裝。',
     '試用並分享意見',
     '建立角色、試用計算機並檢查你的語言。請告訴我們難懂的文字、錯誤的計算結果或顯示問題。你可以使用應用程式中的設定 → 說明與意見回饋，或寄電子郵件給我們。',
     '聯絡 TKM Workshop',
@@ -448,6 +451,9 @@ function setLanguage(value) {
   strings.account=accountHelp[code];
   [strings.continue,strings.confirm]=joinGuidance[code];
   strings.return=returnHelp[code];
+  strings.leave=leaveLabels[code];
+  strings.step1=stepOne[code];
+  strings.step2=stepTwo[code];
   [strings.continue,strings.download,strings.prerequisite]=actionLabels[code];
   if(enrollment.groupUrl && !enrollment.testUrl) strings.pending=pendingHelp[code];
   document.documentElement.lang=code==='zh'?'zh-Hans':code;
@@ -468,7 +474,7 @@ const queryLanguage=new URLSearchParams(location.search).get('lang');
 const browserLanguage=(navigator.languages||[navigator.language]).map(supportedLanguage).find(Boolean);
 setLanguage(supportedLanguage(queryLanguage)||supportedLanguage(savedLanguage)||browserLanguage||'en');
 languageSelect.addEventListener('change',()=>setLanguage(languageSelect.value));
-for (const [id,url] of [['group-link',enrollment.groupUrl],['test-link',enrollment.testUrl]]) {
+for (const [id,url] of [['group-link',enrollment.groupUrl],['test-link',enrollment.testUrl],['leave-link',enrollment.leaveUrl]]) {
   if(url) {
     const link=document.getElementById(id); link.href=url; link.removeAttribute('aria-disabled');
   }
