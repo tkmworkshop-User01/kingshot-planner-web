@@ -12,6 +12,44 @@ const languages = [
   ['id','Bahasa Indonesia'],['ko','한국어'],['ja','日本語'],['zh','简体中文'],['zh-TW','繁體中文']
 ];
 const languageLabels={en:'Language',es:'Idioma',fr:'Langue',de:'Sprache',pt:'Idioma',it:'Lingua',pl:'Język',tr:'Dil',ru:'Язык',ar:'اللغة',th:'ภาษา',vi:'Ngôn ngữ',id:'Bahasa',ko:'언어',ja:'言語',zh:'语言','zh-TW':'語言'};
+const returnHelp={
+  en:'Google Groups opens in a new tab. After joining, return to this signup tab for the installation step.',
+  es:'Grupos de Google se abre en otra pestaña. Después de unirte, vuelve a esta pestaña para el paso de instalación.',
+  fr:'Google Groupes s’ouvre dans un nouvel onglet. Après l’adhésion, revenez à cet onglet pour l’étape d’installation.',
+  de:'Google Groups öffnet sich in einem neuen Tab. Kehre nach dem Beitritt für den Installationsschritt zu diesem Tab zurück.',
+  pt:'O Grupos do Google abre em outra aba. Depois de entrar, volte a esta aba para a etapa de instalação.',
+  it:'Google Gruppi si apre in una nuova scheda. Dopo l’adesione, torna a questa scheda per il passaggio di installazione.',
+  pl:'Grupy dyskusyjne Google otworzą się w nowej karcie. Po dołączeniu wróć do tej karty, aby przejść do instalacji.',
+  tr:'Google Gruplar yeni bir sekmede açılır. Katıldıktan sonra yükleme adımı için bu kayıt sekmesine dön.',
+  ru:'Google Группы откроются в новой вкладке. После вступления вернитесь в эту вкладку для шага установки.',
+  ar:'تفتح مجموعات Google في علامة تبويب جديدة. بعد الانضمام، ارجع إلى علامة التسجيل هذه لخطوة التثبيت.',
+  th:'Google Groups จะเปิดในแท็บใหม่ หลังเข้าร่วมแล้ว กลับมาที่แท็บลงทะเบียนนี้เพื่อดูขั้นตอนติดตั้ง',
+  vi:'Google Groups mở trong thẻ mới. Sau khi tham gia, quay lại thẻ đăng ký này để đến bước cài đặt.',
+  id:'Google Grup terbuka di tab baru. Setelah bergabung, kembali ke tab pendaftaran ini untuk langkah instalasi.',
+  ko:'Google 그룹스가 새 탭에서 열립니다. 가입 후 설치 단계로 진행하려면 이 신청 탭으로 돌아오세요.',
+  ja:'Google グループは新しいタブで開きます。参加後はこの申込タブに戻り、インストールの手順を確認してください。',
+  zh:'Google 群组将在新标签页打开。加入后，请返回此报名标签页查看安装步骤。',
+  'zh-TW':'Google 網上論壇會在新分頁開啟。加入後，請返回此報名分頁查看安裝步驟。'
+};
+const joinGuidance={
+  en:['Continue to Google Groups','On Google Groups, choose Join group. Review your display name and email preferences, then confirm Join group in the final form.'],
+  es:['Continuar a Grupos de Google','En Grupos de Google, elige Unirse al grupo. Revisa tu nombre y las preferencias de correo, y confirma Unirse al grupo en el formulario final.'],
+  fr:['Continuer vers Google Groupes','Dans Google Groupes, choisissez Rejoindre le groupe. Vérifiez votre nom et vos préférences e-mail, puis confirmez Rejoindre le groupe dans le formulaire final.'],
+  de:['Weiter zu Google Groups','Wähle in Google Groups Gruppe beitreten. Prüfe deinen Anzeigenamen und die E-Mail-Einstellungen und bestätige Gruppe beitreten im letzten Formular.'],
+  pt:['Continuar para o Grupos do Google','No Grupos do Google, escolha Participar do grupo. Confira seu nome e as preferências de e-mail e confirme Participar do grupo no formulário final.'],
+  it:['Continua su Google Gruppi','In Google Gruppi, scegli Unisciti al gruppo. Controlla il nome visualizzato e le preferenze e-mail, poi conferma Unisciti al gruppo nel modulo finale.'],
+  pl:['Przejdź do Grup dyskusyjnych Google','W Grupach dyskusyjnych Google wybierz Dołącz do grupy. Sprawdź nazwę i ustawienia e-mail, a potem potwierdź Dołącz do grupy w ostatnim formularzu.'],
+  tr:['Google Gruplar’a devam et','Google Gruplar’da Gruba katıl seçeneğini seç. Görünen adını ve e-posta tercihlerini kontrol et, ardından son formda Gruba katıl seçeneğiyle onayla.'],
+  ru:['Перейти в Google Группы','В Google Группах выберите Вступить в группу. Проверьте отображаемое имя и настройки почты, затем подтвердите Вступить в группу в последней форме.'],
+  ar:['المتابعة إلى مجموعات Google','في مجموعات Google، اختر الانضمام إلى المجموعة. راجع اسم العرض وتفضيلات البريد، ثم أكّد الانضمام إلى المجموعة في النموذج الأخير.'],
+  th:['ไปที่ Google Groups','ใน Google Groups เลือกเข้าร่วมกลุ่ม ตรวจสอบชื่อที่แสดงและการตั้งค่าอีเมล แล้วกดยืนยันเข้าร่วมกลุ่มในแบบฟอร์มสุดท้าย'],
+  vi:['Tiếp tục đến Google Groups','Trong Google Groups, chọn Tham gia nhóm. Kiểm tra tên hiển thị và tùy chọn email, rồi xác nhận Tham gia nhóm trong biểu mẫu cuối cùng.'],
+  id:['Lanjutkan ke Google Grup','Di Google Grup, pilih Gabung ke grup. Periksa nama tampilan dan preferensi email, lalu konfirmasikan Gabung ke grup pada formulir terakhir.'],
+  ko:['Google 그룹스로 계속','Google 그룹스에서 그룹 가입을 선택하세요. 표시 이름과 이메일 설정을 확인한 다음, 마지막 양식에서 그룹 가입을 눌러 확정하세요.'],
+  ja:['Google グループへ進む','Google グループでグループに参加を選びます。表示名とメール設定を確認し、最後のフォームでグループに参加を押して確定してください。'],
+  zh:['前往 Google 群组','在 Google 群组中选择加入群组。检查显示名称和邮件偏好，然后在最后的表单中再次点击加入群组完成确认。'],
+  'zh-TW':['前往 Google 網上論壇','在 Google 網上論壇中選擇加入群組。檢查顯示名稱及電子郵件偏好，再於最後的表單點選加入群組完成確認。']
+};
 const accountHelp={
   en:'A Google account is required, but a Gmail address is not. You can create a Google account with your existing email address. Read Google’s instructions.',
   es:'Se necesita una cuenta de Google, pero no una dirección Gmail. Puedes crear una cuenta de Google con tu correo actual. Consulta las instrucciones de Google.',
@@ -321,13 +359,18 @@ function setLanguage(value) {
   const code=supportedLanguage(value)||'en';
   const strings=Object.fromEntries(fields.map((field,i)=>[field,copy[code][i]]));
   strings.account=accountHelp[code];
+  [strings.continue,strings.confirm]=joinGuidance[code];
+  strings.return=returnHelp[code];
   if(enrollment.groupUrl && !enrollment.testUrl) strings.pending=pendingHelp[code];
   document.documentElement.lang=code==='zh'?'zh-Hans':code;
   document.documentElement.dir=code==='ar'?'rtl':'ltr';
   languageSelect.value=code;
   document.getElementById('language-label').textContent=languageLabels[code];
   document.title=strings.title+' · KS Planner';
-  for (const element of document.querySelectorAll('[data-copy]')) element.textContent=strings[element.dataset.copy];
+  for (const element of document.querySelectorAll('[data-copy]')) {
+    const text=strings[element.dataset.copy];
+    if (typeof text==='string') element.textContent=text;
+  }
   // Language is the sole browser-local preference; no membership data is stored.
   try { localStorage.setItem('ks-testing-language',code); } catch (_) {}
 }
