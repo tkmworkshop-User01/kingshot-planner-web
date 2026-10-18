@@ -31,6 +31,93 @@ const returnHelp={
   zh:'Google 群组将在新标签页打开。加入后，请返回此报名标签页查看安装步骤。',
   'zh-TW':'Google 網上論壇會在新分頁開啟。加入後，請返回此報名分頁查看安裝步驟。'
 };
+const actionLabels={
+  "en": [
+    "Join the group to access the test",
+    "Download and install",
+    "You must join the group first."
+  ],
+  "es": [
+    "Únete al grupo para acceder a la prueba",
+    "Descargar e instalar",
+    "Primero debes unirte al grupo."
+  ],
+  "fr": [
+    "Rejoindre le groupe pour accéder au test",
+    "Télécharger et installer",
+    "Vous devez d’abord rejoindre le groupe."
+  ],
+  "de": [
+    "Gruppe beitreten, um am Test teilzunehmen",
+    "Herunterladen und installieren",
+    "Du musst zuerst der Gruppe beitreten."
+  ],
+  "pt": [
+    "Entre no grupo para acessar o teste",
+    "Baixar e instalar",
+    "Você precisa entrar no grupo primeiro."
+  ],
+  "it": [
+    "Unisciti al gruppo per accedere al test",
+    "Scarica e installa",
+    "Devi prima unirti al gruppo."
+  ],
+  "pl": [
+    "Dołącz do grupy, aby uzyskać dostęp do testu",
+    "Pobierz i zainstaluj",
+    "Najpierw musisz dołączyć do grupy."
+  ],
+  "tr": [
+    "Teste erişmek için gruba katıl",
+    "İndir ve yükle",
+    "Önce gruba katılmalısın."
+  ],
+  "ru": [
+    "Вступить в группу для доступа к тесту",
+    "Скачать и установить",
+    "Сначала нужно вступить в группу."
+  ],
+  "ar": [
+    "انضم إلى المجموعة للوصول إلى الاختبار",
+    "التنزيل والتثبيت",
+    "يجب الانضمام إلى المجموعة أولاً."
+  ],
+  "th": [
+    "เข้าร่วมกลุ่มเพื่อเข้าถึงการทดสอบ",
+    "ดาวน์โหลดและติดตั้ง",
+    "คุณต้องเข้าร่วมกลุ่มก่อน"
+  ],
+  "vi": [
+    "Tham gia nhóm để truy cập bản thử nghiệm",
+    "Tải xuống và cài đặt",
+    "Bạn phải tham gia nhóm trước."
+  ],
+  "id": [
+    "Gabung ke grup untuk mengakses pengujian",
+    "Unduh dan instal",
+    "Anda harus bergabung ke grup terlebih dahulu."
+  ],
+  "ko": [
+    "테스트에 참여하려면 그룹에 가입하세요",
+    "다운로드 및 설치",
+    "먼저 그룹에 가입해야 합니다."
+  ],
+  "ja": [
+    "グループに参加してテストにアクセス",
+    "ダウンロードしてインストール",
+    "先にグループに参加してください。"
+  ],
+  "zh": [
+    "加入群组以参与测试",
+    "下载并安装",
+    "你必须先加入群组。"
+  ],
+  "zh-TW": [
+    "加入群組以參與測試",
+    "下載並安裝",
+    "你必須先加入群組。"
+  ]
+};
 const joinGuidance={
   en:['Continue to Google Groups','On Google Groups, choose Join group. Review your display name and email preferences, then confirm Join group in the final form.'],
   es:['Continuar a Grupos de Google','En Grupos de Google, elige Unirse al grupo. Revisa tu nombre y las preferencias de correo, y confirma Unirse al grupo en el formulario final.'],
@@ -361,6 +448,7 @@ function setLanguage(value) {
   strings.account=accountHelp[code];
   [strings.continue,strings.confirm]=joinGuidance[code];
   strings.return=returnHelp[code];
+  [strings.continue,strings.download,strings.prerequisite]=actionLabels[code];
   if(enrollment.groupUrl && !enrollment.testUrl) strings.pending=pendingHelp[code];
   document.documentElement.lang=code==='zh'?'zh-Hans':code;
   document.documentElement.dir=code==='ar'?'rtl':'ltr';
